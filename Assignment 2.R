@@ -1,21 +1,29 @@
 rm(list=ls())
 
+#First function to:
+#Set Value of Vector
+#Get Value of Vecotr
+#Set Value of Mean
+#Get value of Mean
+
 makeCacheMatrix <- function(x = matrix()) {
-  inv = NULL
-  set = function(y) {
+  Inv = NULL
+  Set = function(y) {
     x <<- y
     inv <<- NULL
   }
   get = function() x
-  setinv = function(inverse) inv <<- inverse 
-  getinv = function() inv
-  list(set=set, get=get, setinv=setinv, getinv=getinv)
+  setinv = function(inverse) Inv <<- inverse 
+  getinv = function() Inv
+  list(Set=Set, get=get, setinv=setinv, getinv=getinv)
 }
+
+#Compute the inverse of the matrix returned by makeCacheMatrix function
 
 cacheSolve <- function(x, ...) {
   inv = x$getinv()
   if (!is.null(inv)){
-    message("getting cached data")
+    message("get cached data")
     return(inv)
   }
   mat.data = x$get()
@@ -25,4 +33,4 @@ cacheSolve <- function(x, ...) {
   return(inv)
 }
 
-#COmment
+
